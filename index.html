@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FixItNow - India's #1 Premium On-Demand Home Services. Book verified Electricians, Plumbers, Pipe Fitters, Carpenters, and Painters at transparent upfront pricing.">
+  <meta name="keywords" content="home services, electrician, plumber, pipe installation, carpenter, painter, CCTV installation, home repair India">
+  <title>FixItNow | Expert Home Services Delivered In 30 Minutes</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+  <!-- Top Notification Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container announcement-content">
+      <div class="announcement-tag">
+        <span class="pulsing-dot"></span>
+        <span class="announcement-text">🎉 <strong>Festive Home Makeover Sale:</strong> Flat <strong>15% OFF</strong> on all services with code <span class="coupon-pill" id="copyHeroCoupon" title="Click to copy">FIXFIRST</span></span>
+      </div>
+      <div class="announcement-links">
+        <span><i class="fa-solid fa-phone"></i> 24x7 Helpline: <strong>1800-419-3499</strong></span>
+        <span class="divider">|</span>
+        <button class="city-selector-btn" id="citySelectorBtn">
+          <i class="fa-solid fa-location-dot"></i> <span id="currentCityText">Mumbai, MH</span> <i class="fa-solid fa-chevron-down arrow-down"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- City Selection Dropdown Modal -->
+  <div class="city-dropdown-menu" id="cityDropdownMenu">
+    <div class="city-dropdown-header">
+      <h4>Select Your City</h4>
+      <p>Services are currently active in top metro regions</p>
+    </div>
+    <div class="city-grid">
+      <button class="city-opt active" data-city="Mumbai, MH"><i class="fa-solid fa-building"></i> Mumbai</button>
+      <button class="city-opt" data-city="Pune, MH"><i class="fa-solid fa-tree-city"></i> Pune</button>
+      <button class="city-opt" data-city="Bengaluru, KA"><i class="fa-solid fa-laptop-code"></i> Bengaluru</button>
+      <button class="city-opt" data-city="Delhi NCR"><i class="fa-solid fa-monument"></i> Delhi NCR</button>
+      <button class="city-opt" data-city="Hyderabad, TS"><i class="fa-solid fa-city"></i> Hyderabad</button>
+      <button class="city-opt" data-city="Chennai, TN"><i class="fa-solid fa-water"></i> Chennai</button>
+    </div>
+  </div>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo">
+        <div class="logo-icon-box">
+          <i class="fa-solid fa-bolt-lightning"></i>
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">FixIt<span class="highlight">Now</span></span>
+          <span class="logo-sub">Expert Home Care</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#why-us" class="nav-link">Why FixItNow</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Nav Actions (Theme, Bookings, Auth, CTA) -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-btn theme-toggle" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+
+        <!-- My Bookings Badge -->
+        <button class="my-bookings-btn" id="myBookingsBtn" title="View My Bookings">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span class="bookings-label">My Bookings</span>
+          <span class="bookings-badge" id="bookingsCountBadge">0</span>
+        </button>
+
+        <!-- Login / User Button -->
+        <div class="auth-buttons-group" id="authButtonGroup">
+          <button class="btn btn-outline" id="navLoginBtn">
+            <i class="fa-regular fa-user"></i> <span>Login</span>
+          </button>
+        </div>
+
+        <!-- Book Service CTA -->
+        <a href="#services" class="btn btn-primary nav-book-cta">
+          <span>Book Now</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <div class="logo-icon-box small">
+          <i class="fa-solid fa-bolt-lightning"></i>
+        </div>
+        <span class="logo-main">FixIt<span class="highlight">Now</span></span>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn">&times;</button>
+    </div>
+    <div class="drawer-body">
+      <nav class="mobile-nav-links">
+        <a href="#home" class="mobile-nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#services" class="mobile-nav-link"><i class="fa-solid fa-screwdriver-wrench"></i> All Services</a>
+        <a href="#how-it-works" class="mobile-nav-link"><i class="fa-solid fa-list-check"></i> How It Works</a>
+        <a href="#why-us" class="mobile-nav-link"><i class="fa-solid fa-shield-halved"></i> Why FixItNow</a>
+        <a href="#reviews" class="mobile-nav-link"><i class="fa-solid fa-star"></i> Customer Reviews</a>
+        <a href="#contact" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+      </nav>
+      <div class="drawer-footer">
+        <button class="btn btn-outline full-width mb-2" id="drawerLoginBtn">
+          <i class="fa-regular fa-user"></i> Login / Register
+        </button>
+        <a href="#services" class="btn btn-primary full-width" id="drawerBookBtn">
+          Book a Service Now
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="home">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="container hero-container">
+      
+      <div class="hero-content">
+        <!-- Floating Trust Tag -->
+        <div class="trust-badge-pill">
+          <span class="shield-icon"><i class="fa-solid fa-shield-halved"></i></span>
+          <span>India's Most Trusted Home Services Network</span>
+          <span class="star-rating"><i class="fa-solid fa-star"></i> 4.9/5 (18,000+ Bookings)</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Expert Home Repairs & Services, <br>
+          <span class="gradient-text">Delivered In 30 Mins.</span>
+        </h1>
+
+        <p class="hero-subtext">
+          Fix leaky pipes, short-circuited wiring, CCTV installations, custom carpentry, and fresh wall painting. Certified & police-verified professionals at upfront guaranteed prices in <strong>₹ Rupees</strong>.
+        </p>
+
+        <!-- Hero Search & Category Quick Filter Bar -->
+        <div class="hero-search-wrapper">
+          <div class="hero-search-bar">
+            <div class="search-input-group">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="heroSearchInput" placeholder="Search CCTV setup, pipe leak, carpenter, painting..." autocomplete="off">
+              <button class="clear-search-btn" id="clearSearchBtn" title="Clear search">&times;</button>
+            </div>
+            <div class="search-divider"></div>
+            <div class="category-select-group">
+              <i class="fa-solid fa-sliders select-icon"></i>
+              <select id="heroCategorySelect" aria-label="Filter Category">
+                <option value="all">All 5 Categories</option>
+                <option value="electrician">Electrician & CCTV</option>
+                <option value="plumber">Plumber</option>
+                <option value="pipe">Pipe Installation</option>
+                <option value="carpenter">Carpenter</option>
+                <option value="painter">Painter</option>
+              </select>
+            </div>
+            <button class="btn btn-primary hero-find-btn" id="heroSearchBtn">
+              <span>Find Experts</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+          <!-- Quick Popular Tags -->
+          <div class="popular-searches">
+            <span class="popular-title">Trending:</span>
+            <button class="tag-btn" data-query="CCTV">CCTV Installation</button>
+            <button class="tag-btn" data-query="Leak">Pipe Leak Fix</button>
+            <button class="tag-btn" data-query="Fan">Ceiling Fan & MCB</button>
+            <button class="tag-btn" data-query="Painting">Royale Painting</button>
+            <button class="tag-btn" data-query="Door">Lock Fitting</button>
+          </div>
+        </div>
+
+        <!-- Floating Trust Badges in Hero -->
+        <div class="hero-trust-cards">
+          <div class="hero-trust-item">
+            <div class="trust-icon bg-blue"><i class="fa-solid fa-user-check"></i></div>
+            <div class="trust-info">
+              <h4>100% Verified</h4>
+              <p>Police-cleared experts</p>
+            </div>
+          </div>
+          <div class="hero-trust-item">
+            <div class="trust-icon bg-emerald"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+            <div class="trust-info">
+              <h4>Fixed ₹ Pricing</h4>
+              <p>Zero hidden charges</p>
+            </div>
+          </div>
+          <div class="hero-trust-item">
+            <div class="trust-icon bg-amber"><i class="fa-solid fa-stopwatch-20"></i></div>
+            <div class="trust-info">
+              <h4>30-Min Arrival</h4>
+              <p>Express doorstep pro</p>
+            </div>
+          </div>
+          <div class="hero-trust-item">
+            <div class="trust-icon bg-purple"><i class="fa-solid fa-shield-heart"></i></div>
+            <div class="trust-info">
+              <h4>30-Day Guarantee</h4>
+              <p>Free rework warranty</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Showcase -->
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <!-- Main Hero Image Showcase Card -->
+          <div class="hero-main-card">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="FixItNow Certified Pro at Work" class="hero-image" loading="lazy">
+            <div class="hero-image-overlay"></div>
+            
+            <!-- Live Status Card Top Left -->
+            <div class="floating-badge badge-top-left">
+              <div class="pulse-ring"></div>
+              <i class="fa-solid fa-shield-virus"></i>
+              <div>
+                <strong>Express Tech En Route</strong>
+                <span>Arriving in 14 mins</span>
+              </div>
+            </div>
+
+            <!-- Booking Confirmed Floating Card Bottom Right -->
+            <div class="floating-badge badge-bottom-right">
+              <div class="badge-icon-wrap">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <div class="badge-text-wrap">
+                <strong>Booking #FN-4892</strong>
+                <span>CCTV 4-Cam Setup Confirmed • ₹2,499</span>
+                <div class="badge-stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <small>5.0 (Ramesh K., Mumbai)</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience Counter Float -->
+            <div class="floating-badge badge-bottom-left">
+              <span class="big-metric">99.4%</span>
+              <span class="sub-metric">On-Time Completion Rate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUICK STATS STRIP -->
+  <section class="stats-strip">
+    <div class="container stats-container">
+      <div class="stat-box">
+        <span class="stat-number" data-count="35000">35,000+</span>
+        <span class="stat-label">Homes Serviced</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <span class="stat-number" data-count="1200">1,200+</span>
+        <span class="stat-label">Verified Pros</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <span class="stat-number">4.92 ★</span>
+        <span class="stat-label">Average Customer Rating</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <span class="stat-number">28 Mins</span>
+        <span class="stat-label">Average Response Time</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="services-section" id="services">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-wrench"></i> Tailored Solutions</span>
+        <h2 class="section-title">Our Premium Home Services</h2>
+        <p class="section-subtitle">
+          Transparent pricing in <strong>₹ Rupees</strong>, verified certified technicians, quality materials, and a 30-day service warranty on every job.
+        </p>
+      </div>
+
+      <!-- Category Filter Pills & Controls -->
+      <div class="services-filter-bar">
+        <div class="category-tabs" id="categoryTabs">
+          <button class="cat-pill active" data-filter="all">
+            <i class="fa-solid fa-layer-group"></i> All Services
+          </button>
+          <button class="cat-pill" data-filter="electrician">
+            <i class="fa-solid fa-bolt"></i> Electrician & CCTV
+          </button>
+          <button class="cat-pill" data-filter="plumber">
+            <i class="fa-solid fa-faucet-drip"></i> Plumber
+          </button>
+          <button class="cat-pill" data-filter="pipe">
+            <i class="fa-solid fa-diagram-project"></i> Pipe Installation
+          </button>
+          <button class="cat-pill" data-filter="carpenter">
+            <i class="fa-solid fa-hammer"></i> Carpenter
+          </button>
+          <button class="cat-pill" data-filter="painter">
+            <i class="fa-solid fa-paint-roller"></i> Painter
+          </button>
+        </div>
+
+        <div class="services-search-sort">
+          <div class="inline-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="inlineSearchInput" placeholder="Filter by title or material...">
+          </div>
+          <div class="sort-dropdown-wrap">
+            <select id="servicesSortSelect" aria-label="Sort Services">
+              <option value="featured">Featured First</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="time">Quickest First</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Count Notice -->
+      <div class="results-meta-row">
+        <span id="resultsCountNotice">Showing <strong>16</strong> verified home services</span>
+        <div class="service-guarantee-pill">
+          <i class="fa-solid fa-shield-halved"></i> 100% Damage Protection upto ₹10,000 Included
+        </div>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="services-grid" id="servicesGrid">
+        <!-- Rendered via JavaScript for high dynamic fidelity & easy sorting -->
+      </div>
+
+      <!-- Empty Results State (Hidden by default) -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon"><i class="fa-solid fa-magnifying-glass-arrow-right"></i></div>
+        <h3>No matching services found</h3>
+        <p>Try searching for different keywords like "CCTV", "drain", "switch", "varnish", or clear filters.</p>
+        <button class="btn btn-outline" id="resetFiltersBtn">Reset All Filters</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS SECTION -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-stairs"></i> Seamless Experience</span>
+        <h2 class="section-title">How FixItNow Works In 3 Simple Steps</h2>
+        <p class="section-subtitle">No more chasing unverified local mechanics. Professional home repair is now as easy as ordering food.</p>
+      </div>
+
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-icon-wrap">
+            <i class="fa-solid fa-calendar-days"></i>
+          </div>
+          <h3>Select Service & Slot</h3>
+          <p>Choose from 50+ specialized home services, pick your preferred date & time slot, and view upfront fixed pricing in ₹.</p>
+          <span class="step-subtag">Takes &lt; 60 seconds</span>
+        </div>
+
+        <div class="step-connector">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card featured">
+          <div class="step-number">02</div>
+          <div class="step-icon-wrap">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <h3>Expert Doorstep Arrival</h3>
+          <p>A background-checked, uniformed professional arrives with all required high-grade tools & equipment in 30 minutes.</p>
+          <span class="step-subtag">Live tracking & ETA updates</span>
+        </div>
+
+        <div class="step-connector">
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-icon-wrap">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+          </div>
+          <h3>Inspect & Pay Securely</h3>
+          <p>Inspect the completed job. Pay only after you are 100% satisfied via UPI, Card, or Cash with a 30-day warranty card.</p>
+          <span class="step-subtag">Post-service payment guarantee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US / TRUST SECTION -->
+  <section class="why-section" id="why-us">
+    <div class="container">
+      <div class="why-wrapper">
+        <div class="why-content">
+          <span class="section-tag"><i class="fa-solid fa-award"></i> The FixItNow Standard</span>
+          <h2 class="section-title">Why 35,000+ Families Choose FixItNow</h2>
+          <p class="section-subtitle mb-4">
+            We eliminate the anxiety of hiring unknown handymen with standardized procedures, police verification, transparent itemized billing, and unconditional warranties.
+          </p>
+
+          <div class="why-features-list">
+            <div class="why-feature-item">
+              <div class="feat-icon"><i class="fa-solid fa-id-card-clip"></i></div>
+              <div>
+                <h4>Triple-Layer Background Screening</h4>
+                <p>Every technician undergoes Aadhaar verification, police criminal background checks, and minimum 5 years practical skill assessment.</p>
+              </div>
+            </div>
+
+            <div class="why-feature-item">
+              <div class="feat-icon"><i class="fa-solid fa-receipt"></i></div>
+              <div>
+                <h4>Upfront Itemized Rate Cards</h4>
+                <p>No arbitrary pricing or last-minute bargaining. Exact price in ₹ Rupees and material breakdown confirmed before work begins.</p>
+              </div>
+            </div>
+
+            <div class="why-feature-item">
+              <div class="feat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div>
+                <h4>30-Day Free Rework Guarantee</h4>
+                <p>If any issue recurs within 30 days of service, our technician returns and resolves it at zero additional cost.</p>
+              </div>
+            </div>
+
+            <div class="why-feature-item">
+              <div class="feat-icon"><i class="fa-solid fa-wallet"></i></div>
+              <div>
+                <h4>Free Cancellation & Rescheduling</h4>
+                <p>Change your appointment anytime with zero penalties or cancellation fees directly from your dashboard.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-media-card">
+          <div class="why-banner-card">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80" alt="Professional Plumber Fixing Sink" class="why-img">
+            <div class="why-stats-badge">
+              <div class="circular-chart">
+                <span class="percentage">99.8%</span>
+              </div>
+              <div class="chart-text">
+                <strong>Safety & Satisfaction</strong>
+                <span>Verified over 40k+ jobs</span>
+              </div>
+            </div>
+            <div class="quote-card">
+              <i class="fa-solid fa-quote-left quote-icon"></i>
+              <p>"The CCTV setup and pipe concealment in my new flat was flawless. Transparent cost and prompt team!"</p>
+              <div class="quote-author">
+                <strong>Ananya Deshmukh</strong>
+                <span>Bandra West, Mumbai</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-comments"></i> Real Experiences</span>
+        <h2 class="section-title">Loved by Homeowners Across India</h2>
+        <p class="section-subtitle">Read unfiltered reviews from verified customers who booked through FixItNow.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Pooja Sharma" class="reviewer-avatar">
+            <div>
+              <h4 class="reviewer-name">Pooja Sharma <i class="fa-solid fa-circle-check verified-icon" title="Verified Customer"></i></h4>
+              <span class="reviewer-loc">Koramangala, Bengaluru</span>
+            </div>
+            <div class="service-pill-small">Electrician & CCTV</div>
+          </div>
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <span class="review-date">Yesterday</span>
+          </div>
+          <p class="review-body">
+            "Booked the 4-Camera CCTV installation for our duplex. Technician Rajesh arrived on time with complete drills, junction boxes, and Cat6 cabling. He configured mobile streaming on all our phones. Very professional!"
+          </p>
+          <div class="review-cost-tag">Booked: <strong>CCTV Setup (₹2,499)</strong></div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Vikram Malhotra" class="reviewer-avatar">
+            <div>
+              <h4 class="reviewer-name">Vikram Malhotra <i class="fa-solid fa-circle-check verified-icon" title="Verified Customer"></i></h4>
+              <span class="reviewer-loc">Viman Nagar, Pune</span>
+            </div>
+            <div class="service-pill-small">Pipe Installation</div>
+          </div>
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <span class="review-date">3 days ago</span>
+          </div>
+          <p class="review-body">
+            "Had severe water leakage behind the kitchen tiles. The technician used pressure tests to locate the rupture and replaced the line with Astral CPVC pipes in under 3 hours. No extra surprise costs. Fantastic service!"
+          </p>
+          <div class="review-cost-tag">Booked: <strong>Concealed Pipeline (₹2,999)</strong></div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Sneha Kulkarni" class="reviewer-avatar">
+            <div>
+              <h4 class="reviewer-name">Sneha Kulkarni <i class="fa-solid fa-circle-check verified-icon" title="Verified Customer"></i></h4>
+              <span class="reviewer-loc">Thane West, Mumbai</span>
+            </div>
+            <div class="service-pill-small">Painter</div>
+          </div>
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <span class="review-date">1 week ago</span>
+          </div>
+          <p class="review-body">
+            "Asian Paints Royale luxury finish for our living room. The crew masked our furniture with plastic sheets, repaired hairline plaster cracks, and completed two coats with zero mess. My home looks brand new."
+          </p>
+          <div class="review-cost-tag">Booked: <strong>Full Room Paint (₹4,499)</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQS SECTION -->
+  <section class="faq-section" id="faqs">
+    <div class="container faq-container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-circle-question"></i> Got Questions?</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about booking, pricing, and warranties.</p>
+      </div>
+
+      <div class="faq-accordion" id="faqAccordion">
+        <!-- Item 1 -->
+        <div class="faq-item active">
+          <button class="faq-question">
+            <span>How are FixItNow service professionals verified?</span>
+            <i class="fa-solid fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Every technician undergoes a stringent 3-tier screening protocol: Government Aadhaar verification, local police record clearance, and practical hands-on proficiency testing conducted by our senior master technicians.</p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do I have to buy materials and spare parts myself?</span>
+            <i class="fa-solid fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Standard basic consumables (teflon tape, screws, standard seals, basic connectors) are included in the service cost. If specialized replacement spares (e.g. brand-specific geyser heating element, luxury taps, or designer locks) are needed, our technician provides authentic branded spares with GST bills, or you are free to supply them yourself.</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What if I am unhappy with the service or the issue recurs?</span>
+            <i class="fa-solid fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">
+            <p>All FixItNow bookings come with our signature <strong>30-Day Fix Guarantee</strong>. If you notice any defect, leakage, or glitch within 30 days, we dispatch a senior expert to re-inspect and fix it completely free of charge.</p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I reschedule or cancel my booking?</span>
+            <i class="fa-solid fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, 100% free! You can reschedule your date and time slot or cancel your booking at any time before the technician arrives at your doorstep, with zero cancellation fees.</p>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What payment modes are accepted?</span>
+            <i class="fa-solid fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">
+            <p>You can pay safely post-service using Google Pay, PhonePe, Paytm, UPI QR, Credit/Debit cards, Net Banking, or Cash on Delivery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & SUPPORT SECTION -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info-panel">
+          <span class="section-tag"><i class="fa-solid fa-headset"></i> 24x7 Support</span>
+          <h2 class="section-title text-left">Need Urgent Assistance or Custom Quotes?</h2>
+          <p class="mb-4">
+            Have a specialized commercial project or facing a late-night plumbing or electrical emergency? Our rapid dispatch control room is live 24/7.
+          </p>
+
+          <div class="contact-methods">
+            <div class="contact-method-item">
+              <div class="method-icon"><i class="fa-solid fa-phone-volume"></i></div>
+              <div>
+                <h5>Toll-Free Customer Care</h5>
+                <p>1800-419-3499 (Toll Free)</p>
+                <small>Available 24 hours / 7 days</small>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="method-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div>
+                <h5>Instant WhatsApp Booking</h5>
+                <p>+91 98200 45678</p>
+                <small>Average response time: 2 mins</small>
+              </div>
+            </div>
+
+            <div class="contact-method-item">
+              <div class="method-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+              <div>
+                <h5>Priority Email Support</h5>
+                <p>support@fixitnow.in</p>
+                <small>Guaranteed response in 1 hour</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Contact / Callback Form -->
+        <div class="contact-form-panel">
+          <h3>Request Immediate Callback</h3>
+          <p class="form-desc">Fill in details and our area supervisor will call you in 5 minutes.</p>
+
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Full Name *</label>
+                <input type="text" id="contactName" placeholder="e.g. Rahul Sharma" required>
+              </div>
+              <div class="form-group">
+                <label for="contactPhone">Mobile Number (WhatsApp) *</label>
+                <div class="phone-input-group">
+                  <span class="country-prefix"><span class="country-flag">🇮🇳</span> +91</span>
+                  <input type="tel" id="contactPhone" placeholder="XXXXX XXXXX" maxlength="10" pattern="[0-9]{10}" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactService">Required Service *</label>
+                <select id="contactService" required>
+                  <option value="">Select Service Category</option>
+                  <option value="Electrician & CCTV">Electrician & CCTV Installation</option>
+                  <option value="Plumber Repair">Plumber Repair & Unclogging</option>
+                  <option value="Pipe Installation">Water & Gas Pipe Installation</option>
+                  <option value="Carpentry Works">Carpentry & Lock Works</option>
+                  <option value="Painting Services">Interior / Exterior Wall Painting</option>
+                  <option value="Emergency Combo">Emergency Combo Repair</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contactCity">Your City *</label>
+                <select id="contactCity" required>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Bengaluru">Bengaluru</option>
+                  <option value="Delhi NCR">Delhi NCR</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Chennai">Chennai</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Describe Your Issue or Timing Requirements</label>
+              <textarea id="contactMessage" rows="3" placeholder="e.g. Need 4 HD CCTV cameras fitted in my office tomorrow morning..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary full-width" id="contactSubmitBtn">
+              <span>Request Instant Callback</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <p class="privacy-note"><i class="fa-solid fa-lock"></i> Your contact information is 100% private and protected.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-col brand-col">
+        <a href="#home" class="brand-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-bolt-lightning"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-main">FixIt<span class="highlight">Now</span></span>
+            <span class="logo-sub">Expert Home Care</span>
+          </div>
+        </a>
+        <p class="footer-about">
+          FixItNow is India's premier tech-enabled on-demand home maintenance service platform. Delivering verified, certified, and police-vetted technicians right to your door with upfront pricing.
+        </p>
+        <div class="footer-social-links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services" class="quick-filter-link" data-filter="electrician">Electrician & CCTV</a></li>
+          <li><a href="#services" class="quick-filter-link" data-filter="plumber">Plumber & Drainage</a></li>
+          <li><a href="#services" class="quick-filter-link" data-filter="pipe">CPVC Pipe Installation</a></li>
+          <li><a href="#services" class="quick-filter-link" data-filter="carpenter">Carpenter & Furniture</a></li>
+          <li><a href="#services" class="quick-filter-link" data-filter="painter">Full Room Painting</a></li>
+          <li><a href="#services" class="quick-filter-link" data-filter="electrician">Smart Home Setup</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Service Cities</h4>
+        <ul class="footer-links">
+          <li><a href="#home" class="city-footer-link" data-city="Mumbai, MH">Mumbai (MMR)</a></li>
+          <li><a href="#home" class="city-footer-link" data-city="Pune, MH">Pune & PCMC</a></li>
+          <li><a href="#home" class="city-footer-link" data-city="Bengaluru, KA">Bengaluru City</a></li>
+          <li><a href="#home" class="city-footer-link" data-city="Delhi NCR">Delhi, Noida & Gurugram</a></li>
+          <li><a href="#home" class="city-footer-link" data-city="Hyderabad, TS">Hyderabad</a></li>
+          <li><a href="#home" class="city-footer-link" data-city="Chennai, TN">Chennai Metro</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company & Trust</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About FixItNow</a></li>
+          <li><a href="#why-us">Technician Verification</a></li>
+          <li><a href="#services">₹ Upfront Rate Card</a></li>
+          <li><a href="#faqs">30-Day Guarantee Policy</a></li>
+          <li><a href="#contact">Emergency Escalations</a></li>
+          <li><a href="#contact">Partner with Us (Pro Join)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 FixItNow Services Private Limited. All Rights Reserved.</p>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <span>•</span>
+          <a href="#">Terms of Service</a>
+          <span>•</span>
+          <a href="#">Safety Guidelines</a>
+          <span>•</span>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- MODALS SYSTEM (BOOKING, LOGIN, REGISTER, MY BOOKINGS)    -->
+  <!-- ======================================================== -->
+
+  <!-- BOOKING MODAL -->
+  <div class="modal-backdrop" id="bookingModalBackdrop">
+    <div class="modal-dialog modal-lg" id="bookingModalDialog">
+      <button class="modal-close-btn" id="bookingModalCloseBtn" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-body-scrollable" id="bookingModalBody">
+        <!-- Dynamic Booking Content will be injected by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE DETAIL / QUICK VIEW MODAL -->
+  <div class="modal-backdrop" id="quickViewModalBackdrop">
+    <div class="modal-dialog" id="quickViewModalDialog">
+      <button class="modal-close-btn" id="quickViewCloseBtn" aria-label="Close modal">&times;</button>
+      <div class="quick-view-content" id="quickViewContent">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL (LOGIN & REGISTER TABS) -->
+  <div class="modal-backdrop" id="authModalBackdrop">
+    <div class="modal-dialog modal-auth" id="authModalDialog">
+      <button class="modal-close-btn" id="authModalCloseBtn" aria-label="Close modal">&times;</button>
+      
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="tabLoginBtn">Log In</button>
+        <button class="auth-tab-btn" id="tabRegisterBtn">Create Account</button>
+      </div>
+
+      <!-- Notice Banner when redirected from Book Now or My Bookings -->
+      <div id="authNoticeBanner" class="auth-notice-banner" style="display:none;">
+        <i class="fa-solid fa-lock"></i>
+        <span id="authNoticeText">Please log in to continue</span>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div class="auth-form-wrap" id="loginFormWrap">
+        <div class="auth-header">
+          <h3>Welcome Back!</h3>
+          <p>Log in with your MySQL registered account to view active bookings and re-book</p>
+        </div>
+
+        <form id="loginForm">
+          <div class="form-group mb-3">
+            <label for="loginPhone">Mobile Number (or Email)</label>
+            <div class="phone-input-group">
+              <span class="country-prefix"><span class="country-flag">🇮🇳</span> +91</span>
+              <input type="text" id="loginPhone" placeholder="XXXXX XXXXX" required>
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <div class="label-with-link">
+              <label for="loginPassword">Password</label>
+              <a href="#" class="forgot-link" id="forgotPasswordLink">Forgot?</a>
+            </div>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-key"></i>
+              <input type="password" id="loginPassword" placeholder="Enter password" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary full-width mb-3" id="loginSubmitBtn">
+            <span>Login to FixItNow</span>
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          </button>
+
+          <div class="demo-credential-hint">
+            <small><i class="fa-solid fa-shield-halved"></i> Instant verified login with your registered account</small>
+          </div>
+
+          <div class="auth-divider"><span>OR CONTINUE WITH</span></div>
+
+          <div class="social-auth-grid">
+            <button type="button" class="social-btn" id="googleLoginBtn">
+              <i class="fa-brands fa-google"></i> Google
+            </button>
+            <button type="button" class="social-btn" id="otpLoginBtn">
+              <i class="fa-solid fa-comment-sms"></i> Instant OTP
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div class="auth-form-wrap" id="registerFormWrap" style="display: none;">
+        <div class="auth-header">
+          <h3>Join FixItNow</h3>
+          <p>Create your verified account in our database and claim ₹200 joining bonus!</p>
+        </div>
+
+        <form id="registerForm">
+          <div class="form-group mb-2">
+            <label for="regName">Full Name *</label>
+            <div class="input-with-icon">
+              <i class="fa-regular fa-user"></i>
+              <input type="text" id="regName" placeholder="e.g. Aditi Rao" required>
+            </div>
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="regPhone">Mobile Number *</label>
+            <div class="phone-input-group">
+              <span class="country-prefix"><span class="country-flag">🇮🇳</span> +91</span>
+              <input type="tel" id="regPhone" placeholder="XXXXX XXXXX" maxlength="10" pattern="[0-9]{10}" required>
+            </div>
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="regEmail">Email Address</label>
+            <div class="input-with-icon">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="email" id="regEmail" placeholder="name@domain.com">
+            </div>
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="regPassword">Set Password *</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-key"></i>
+              <input type="password" id="regPassword" placeholder="Minimum 6 characters" minlength="6" required>
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="regCity">City *</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-location-dot"></i>
+              <select id="regCity" required>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Pune">Pune</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Delhi NCR">Delhi NCR</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Chennai">Chennai</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary full-width mb-2" id="registerSubmitBtn">
+            <span>Create Account & Save to Database</span>
+            <i class="fa-solid fa-user-plus"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MY BOOKINGS DRAWER / MODAL -->
+  <div class="modal-backdrop" id="myBookingsModalBackdrop">
+    <div class="modal-dialog modal-md" id="myBookingsDialog">
+      <button class="modal-close-btn" id="myBookingsCloseBtn" aria-label="Close modal">&times;</button>
+      
+      <div class="bookings-modal-header">
+        <div class="title-with-icon">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <div>
+            <h3>My Service Bookings</h3>
+            <p>Track live visits, view warranty, or cancel</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bookings-list" id="myBookingsList">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Floating Quick Booking Widget Button for Mobile / Easy Access -->
+  <a href="#services" class="floating-quick-book-btn" id="floatingBookBtn">
+    <i class="fa-solid fa-bolt"></i>
+    <span>Book Pro</span>
+  </a>
+
+  <!-- JavaScript -->
+  <script src="script.js?v=2"></script>
+</body>
+</html>
